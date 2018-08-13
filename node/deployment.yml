@@ -1,0 +1,25 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: app-standby-emily
+  labels:
+    app: app-standby-emily
+    env: production
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app-standby-emily
+      env: production
+  template:
+    metadata:
+      labels:
+        app: app-standby-emily
+        env: production
+    spec:
+      containers:
+      - image: registry.cn-hangzhou.aliyuncs.com/xiaoman-cn/smart-nginx-php-fpm:release
+        name: app-standby-emily
+        ports:
+        - containerPort: 8080
+          protocol: TCP

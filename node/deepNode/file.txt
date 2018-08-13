@@ -1,0 +1,1 @@
+标准I/O流的读写：使用process.stdout 和 process.stdin.

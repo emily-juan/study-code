@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>IndexDB</title>
+  </head>
+  <body>
+    <script>
+    if (!window.indexedDB) {
+      window.alert("Your browser doesn't support a stable version of IndexedDB. Such and such feature will not be available.")
+    } else {
+      console.log('ok')
+    }
+
+    /* // 打开我们的数据库
+    var db = {}
+    var request = indexedDB.open("MyTestDatabase", 3);
+    console.log(request)
+
+    db.onerror = function(event) {
+      // Generic error handler for all errors targeted at this database's
+      // requests!
+      alert("Database error: " + event.target.errorCode);
+    };
+    request.onsuccess = function(event) {
+      db = request.result;
+    };
+    console.log(db)
+
+    // 该事件仅在较新的浏览器中被实现
+    request.onupgradeneeded = function(event) {
+       // 更新对象存储空间和索引 ....
+    };*/
+    
+    const customerData = [{
+      ssn: '444-44-4444',
+      name: 'Emily',
+      age: 35,
+      email: 'emily@company.com'
+    }, {
+      ssn: '5555-555-55',
+      name: 'Donna',
+      age: 32,
+      email: 'donna@home.org'
+    }];
+
+    const dbName = 'the_name';
+
+    var request = indexedDB.open(dbName, 2);
+
+    request.onerror = function(event) {
+      console.log("Database error: " + event.target.errorCode)
+    }
+
+    request.onupgradeneeded = function(event) {
+
+      var db = event.target.result;
+
+      // 对象存储空间
+      // 使用 ssn 作为 key path 因为它是保证唯一的
+      var objectStore = db.createObjectState("customer", { keyPath: 'ssn'});
+
+      // 创建一个索引来通过 name 搜索客户
+      // 可能会有重复的，因此我们不能使用unique索引
+      objectStore.createIndex("name", "name", {unique: false});
+
+      // 创建一个索引来通过 email 搜索客户 唯一
+      objectStore.createIndex("email", "email", { unique: true });
+
+      // 在新的对象存储空间中保存值
+      for (var i in customerData) {
+        objectStore.add(customerData[i])
+      }
+    }
+    </script>
+  </body>
+</html>

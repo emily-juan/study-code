@@ -1,0 +1,7 @@
+Dockerfile
+
+kubectl get nodes 
+kubectl describe node 
+
+kubectl create -f deployment.yml
+kubectl create -f service.yml
