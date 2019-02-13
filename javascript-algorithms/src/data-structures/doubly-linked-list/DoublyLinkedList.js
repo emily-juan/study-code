@@ -70,8 +70,6 @@ export default class DoublyLinkedList {
           previousNode.next = nextNode;
           nextNode.previous = previousNode;
         }
-        currentNode.next = currentNode.next.next;
-        currentNode.next.previous = currentNode;
       }
 
       currentNode = currentNode.next;
@@ -87,7 +85,7 @@ export default class DoublyLinkedList {
 
     let currentNode = this.head;
     while (currentNode) {
-      if (callback && callback(value)) {
+      if (callback && callback(currentNode.value)) {
         return currentNode;
       }
 

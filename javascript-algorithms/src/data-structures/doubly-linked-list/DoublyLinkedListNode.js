@@ -1,5 +1,5 @@
 export default class DoublyLinedListNode {
-  constructor(value, previous = null, next = null) {
+  constructor(value, next = null, previous = null) {
     this.value = value;
     this.next = next;
     this.previous = previous;
