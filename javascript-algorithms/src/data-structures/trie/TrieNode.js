@@ -4,6 +4,7 @@ export default class TrieNode {
   constructor(character, isCompleteWord = false) {
     this.character = character;
     this.isCompleteWord = isCompleteWord;
+    // character -> TrieNode
     this.children = new HashTable();
   }
 
@@ -34,6 +35,10 @@ export default class TrieNode {
     }
 
     return this;
+  }
+
+  hasChild(character) {
+    return this.children.has(character);
   }
 
   hasChildren() {
