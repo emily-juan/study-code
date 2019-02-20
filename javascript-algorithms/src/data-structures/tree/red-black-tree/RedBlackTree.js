@@ -10,7 +10,6 @@ const COLOR_PROP_NAME = 'color';
 export default class RedBlackTree extends BinarySearchTree {
   insert(value) {
     const insertedNode = super.insert(value);
-    console.log(insertedNode);
 
     if (this.nodeComparator.equal(insertedNode, this.root)) {
       this.makeNodeBlack(insertedNode);
@@ -36,50 +35,54 @@ export default class RedBlackTree extends BinarySearchTree {
       return;
     }
 
-    const grandParent = node.parent.patent;
+    const grandParent = node.parent.parent;
 
     if (node.uncle && this.isNodeRed(node.uncle)) {
       this.makeNodeBlack(node.uncle);
       this.makeNodeBlack(node.parent);
 
       if (!this.nodeComparator.equal(grandParent, this.root)) {
+        // Recolor grand-parent to red if it is not root.
         this.makeNodeRed(grandParent);
       } else {
+        // If grand-parent is black root don't do anything.
+        // Since root already has two black sibling that we've just recolored.
         return;
       }
 
       this.balance(grandParent);
     } else if (!node.uncle || this.isNodeBlack(node.uncle)) {
       if (grandParent) {
-        let newGrandPatent;
+        let newGrandParent;
 
-        if (this.nodeComparator.equal(grandParent.left, node.patent)) {
+        if (this.nodeComparator.equal(grandParent.left, node.parent)) {
           // Left case
-          if (!this.nodeComparator.equal(node.parent.left, node)) {
+          if (this.nodeComparator.equal(node.parent.left, node)) {
             // Left-Left
-            newGrandPatent = this.leftLeftRotation(grandParent);
+            newGrandParent = this.leftLeftRotation(grandParent);
           } else {
             // Left-Right
-            newGrandPatent = this.leftRightRotation(grandParent);
+            newGrandParent = this.leftRightRotation(grandParent);
           }
         } else {
           // right
-          if (this.nodeComparator.equal(node.patent.right, node)) {
+          if (this.nodeComparator.equal(node.parent.right, node)) {
             // right-right
-            newGrandPatent = this.rightRightRotation(grandParent);
+            newGrandParent = this.rightRightRotation(grandParent);
           } else {
             // right-left
-            newGrandPatent = this.rightLeftRotation(grandParent);
+            console.log('right-left');
+            newGrandParent = this.rightLeftRotation(grandParent);
           }
         }
 
-        if (newGrandPatent && newGrandPatent.parent === null) {
-          this.root = newGrandPatent;
+
+        if (newGrandParent && newGrandParent.parent === null) {
+          this.root = newGrandParent;
 
           this.makeNodeBlack(this.root);
         }
-
-        this.balance(newGrandPatent);
+        this.balance(newGrandParent);
       }
     }
   }
@@ -105,7 +108,7 @@ export default class RedBlackTree extends BinarySearchTree {
         grandGrandParent.setRight(parentNode);
       }
     } else {
-      parentNode.patent = null;
+      parentNode.parent = null;
     }
 
     this.swapNodeColors(parentNode, grandParentNode);
@@ -148,7 +151,7 @@ export default class RedBlackTree extends BinarySearchTree {
         grandGrandParent.setRight(parentNode);
       }
     } else {
-      parentNode.patent = null;
+      parentNode.parent = null;
     }
 
     this.swapNodeColors(parentNode, grandParentNode);
@@ -161,7 +164,7 @@ export default class RedBlackTree extends BinarySearchTree {
 
     const childRightNode = childNode.right;
 
-    childNode.setLeft(parentNode);
+    childNode.setRight(parentNode);
     parentNode.setLeft(childRightNode);
     grandParentNode.setRight(childNode);
 

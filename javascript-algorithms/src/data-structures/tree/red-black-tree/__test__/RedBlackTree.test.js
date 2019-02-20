@@ -246,6 +246,9 @@ describe('RedBlackTree', () => {
 
   it('should do right-left rotation', () => {
     const tree = new RedBlackTree();
+    //               10 b
+    //       -10 b         25 b
+    //  -20 r     6 r  20 r     30 r
 
     const node1 = tree.insert(10);
     const node2 = tree.insert(-10);
