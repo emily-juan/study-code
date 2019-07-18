@@ -1,8 +1,8 @@
-version: 1.6.0
+version: 4.6.0
 files:
-  - url: Xiaoman-alpha Setup 1.6.0.exe
+  - url: Xiaoman-alpha Setup 4.6.0.exe
     sha512: uxdY533urtIAn7V/Aggu2vpBWGLOUa8Ra6+KN3sfrobUGYuQJn9hR64gdnUqU/lToovBjuRDI+3f1hDJmcVgog==
     size: 104265552
-path: Xiaoman-alpha Setup 1.6.0.exe
+path: Xiaoman-alpha Setup 4.6.0.exe
 sha512: uxdY533urtIAn7V/Aggu2vpBWGLOUa8Ra6+KN3sfrobUGYuQJn9hR64gdnUqU/lToovBjuRDI+3f1hDJmcVgog==
 releaseDate: '2019-07-18T04:15:14.617Z'
