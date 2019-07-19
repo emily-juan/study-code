@@ -1,0 +1,14 @@
+version: 4.6.0
+files:
+  - url: >-
+      http://g.xiaoman.cc:8080/job/Pipeline-DT/job/irelia/job/develop/lastSuccessfulBuild/artifact/release/Xiaoman-alpha
+      Setup 4.6.0.exe
+    sha512: >-
+      uxdY533urtIAn7V/Aggu2vpBWGLOUa8Ra6+KN3sfrobUGYuQJn9hR64gdnUqU/lToovBjuRDI+3f1hDJmcVgog==
+    size: 104265552
+path: >-
+  http://g.xiaoman.cc:8080/job/Pipeline-DT/job/irelia/job/develop/lastSuccessfulBuild/artifact/release/Xiaoman-alpha
+  Setup 4.6.0.exe
+sha512: >-
+  uxdY533urtIAn7V/Aggu2vpBWGLOUa8Ra6+KN3sfrobUGYuQJn9hR64gdnUqU/lToovBjuRDI+3f1hDJmcVgog==
+releaseDate: '2019-07-18T04:15:14.617Z'

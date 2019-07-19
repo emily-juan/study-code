@@ -1,0 +1,12 @@
+version: 4.6.0
+files:
+  - url: Xiaoman-alpha-4.6.0-mac.zip
+    sha512: an6dWjMtReX0F8K7/7L2xI0c4I2sLypSLugCr1xRqGiwrZJ0A60aE6IVXyUq8TrPIJM6dp7ulZ/h0hb7RIMVJA==
+    size: 69156000
+    blockMapSize: 72900
+  - url: Xiaoman-alpha-4.6.0.dmg
+    sha512: L9BIl8wloKWW/hVONKPz4xKos6fYqgDkEF44YAiJB7bzmeaBRmfJfW10FOSygaXL/EgcKNV6+oGcnZI4iXosPA==
+    size: 72346528
+path: Xiaoman-alpha-4.6.0-mac.zip
+sha512: an6dWjMtReX0F8K7/7L2xI0c4I2sLypSLugCr1xRqGiwrZJ0A60aE6IVXyUq8TrPIJM6dp7ulZ/h0hb7RIMVJA==
+releaseDate: '2019-07-18T04:14:59.503Z'
